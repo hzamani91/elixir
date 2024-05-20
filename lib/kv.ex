@@ -1,18 +1,15 @@
 defmodule KV do
-  @moduledoc """
-  Documentation for `KV`.
-  """
+  use Application
+  alias UUID
 
-  @doc """
-  Hello world.
+  def start(_type,_args) do
+    KV.main()
+    Supervisor.start_link([],strategy: :one_for_one)
+  end
 
-  ## Examples
-
-      iex> KV.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def main do
+    a = 10
+    b = 3.0
+    IO.puts((a+b))
   end
 end
